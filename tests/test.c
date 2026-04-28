@@ -11,7 +11,9 @@ int	main(void)
 	run_test("new_vector", &test_new_vector);
 	run_test("add_tuple", &test_add_tuple);
 	run_test("subtract_tuple", &test_subtract_tuple);
-	run_test("subtract_tuple", &test_negate_tuple);
+	run_test("negate_tuple", &test_negate_tuple);
+	run_test("scalar_tuple", &test_scalar_tuple);
+	run_test("divide_tuple", &test_divide_tuple);
 	printf("\nTests finished\n-------------------------\n\n");
 }
 

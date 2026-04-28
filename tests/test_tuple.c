@@ -144,3 +144,40 @@ int test_negate_tuple(void)
 
 	return (0);
 }
+
+int	test_scalar_tuple(void)
+{
+	t_tuple	*t1;
+	t_tuple *res;
+
+	t1 = new_tuple(1, -2, 3, -4);
+	res = scalar_tuple(3.5, t1);
+	free(t1);
+	if (!res || res->x != 3.5f || res->y != -7 || res->z != 10.5f || res->w != -14)
+		return (-1);
+	free(res);
+
+	t1 = new_tuple(1, -2, 3, -4);
+	res = scalar_tuple(0.5, t1);
+	free(t1);
+	if (!res || res->x != 0.5f || res->y != -1 || res->z != 1.5f || res->w != -2)
+		return (-1);
+	free(res);
+
+	return (0);
+}
+
+int	test_divide_tuple(void)
+{
+	t_tuple	*t1;
+	t_tuple *res;
+
+	t1 = new_tuple(1, -2, 3, -4);
+	res = divide_tuple(2, t1);
+	free(t1);
+	if (!res || res->x != 0.5f || res->y != -1 || res->z != 1.5f || res->w != -2)
+		return (-1);
+	free(res);
+
+	return (0);
+}

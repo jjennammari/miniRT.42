@@ -16,7 +16,7 @@ LIBFT = libft/libft.a
 LIBFT_H = libft/include
 
 # Source files
-FILES = main.c tuple_creation.c tuple_operation.c
+FILES = main.c tuple_creation.c tuple_operation.c float_helper.c
 
 # Fullpath for source and objects
 SRC := $(addprefix $(SRC_DIR)/,$(FILES))
@@ -26,7 +26,8 @@ OBJ := $(addprefix $(BUILD_DIR)/,$(FILES:.c=.o))
 TEST = test_miniRT
 TEST_SRC_DIR = tests
 TEST_BUILD_DIR = test_build
-TEST_FILES = $(filter-out main.c, $(FILES)) test.c test_tuple.c
+TEST_FILES = test.c test_tuple.c
+TEST_FILES += $(filter-out main.c, $(FILES))
 TEST_SRC := $(addprefix $(TEST_SRC_DIR)/,$(TEST_FILES))
 TEST_OBJ := $(addprefix $(TEST_BUILD_DIR)/,$(TEST_FILES:.c=.o))
 
