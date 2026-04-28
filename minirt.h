@@ -19,14 +19,9 @@ typedef struct	s_tuple
 	double	w;
 }	t_tuple;
 
-typedef struct	s_matrix
-{
-	t_tuple			*tuple;
-	struct s_matrix	*next;
-}	t_matrix;
-
 /* main.c */
 int		main(int ac, char **av);
+t_tuple	*assign_tuple(char **av);
 double	ft_atod(char *str);
 bool	ft_isspace(char c);
 bool	ft_isdigit(char c);

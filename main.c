@@ -1,5 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jemustaj <jemustaj@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/28 16:08:15 by jemustaj          #+#    #+#             */
+/*   Updated: 2026/04/28 16:25:06 by jemustaj         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minirt.h"
 
+int		main(int ac, char **av);
+t_tuple	*assign_tuple(char **av);
 double	ft_atod(char *str);
 bool	ft_isspace(char c);
 bool	ft_isdigit(char c);
@@ -8,48 +22,40 @@ void	error_exit(void);
 
 int	main(int ac, char **av)
 {
-	t_tuple	*point;
-	t_tuple	*vector;
-	t_tuple	*new;
-	int		count;
+	t_tuple	*t1;
+	t_tuple	*t2;
 
-	point = NULL;
-	vector = NULL;
-	if (ac > 1)
+	t1 = NULL;
+	t2 = NULL;
+	if (ac == 5 || ac == 9)
 	{
-		//TODO: parse inputs before atod
-		count = 1;
-		while (count < ac)
-		{
-			double x = ft_atod(av[count]);
-			count++;
-			double y = ft_atod(av[count]);
-			count++;
-			double z = ft_atod(av[count]);
-			count++;
-			double w = ft_atod(av[count]);
-			count++;
-			if (ft_isequal(w, 1.0))
-			{
-				point[i] = create_tuple(x, y, z, w);
-				printf("point\n");
-				print_tuple(point);
-				i++;
-			}
-			else
-			{
-				vector[j] = create_tuple(x, y, z, w);
-				printf("vector\n");
-				print_tuple(vector);
-				j++;
-			}
-		}
-		new = sum_tuple(vector, point);
-		print_tuple(new);
+		t1 = assign_tuple(&av[1]);
+		if (ac == 9)
+			t2 = assign_tuple(&av[5]);
 	}
 	else
 		printf("Send arguments: x, y, z, and w\n");
 	return (0);
+}
+
+t_tuple	*assign_tuple(char **av)
+{
+	double	x;
+	double	y;
+	double	z;
+	double	w;
+	int		i;
+
+	i = 0;
+	while (av[i] && i < 4)
+	{
+		x = ft_atod(av[i]);
+		y = ft_atod(av[i]);
+		z = ft_atod(av[i]);
+		w = ft_atod(av[i]);
+		i++;
+	}
+	return (create_tuple(x, y, z, w));
 }
 
 double	ft_atod(char *str)
