@@ -26,7 +26,7 @@ OBJ := $(addprefix $(BUILD_DIR)/,$(FILES:.c=.o))
 TEST = test_miniRT
 TEST_SRC_DIR = tests
 TEST_BUILD_DIR = test_build
-TEST_FILES = test.c test_tuple.c tuple_creation.c tuple_operation.c
+TEST_FILES = $(filter-out main.c, $(FILES)) test.c test_tuple.c
 TEST_SRC := $(addprefix $(TEST_SRC_DIR)/,$(TEST_FILES))
 TEST_OBJ := $(addprefix $(TEST_BUILD_DIR)/,$(TEST_FILES:.c=.o))
 
