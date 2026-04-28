@@ -18,20 +18,28 @@ double	ft_atod(char *str);
 bool	ft_isspace(char c);
 bool	ft_isdigit(char c);
 bool	ft_isequal(double d1, double d2);
-void	error_exit(void);
+void	error_exit(int per);
 
 int	main(int ac, char **av)
 {
 	t_tuple	*t1;
 	t_tuple	*t2;
+	t_tuple	*t3;
+	double	val;
 
 	t1 = NULL;
 	t2 = NULL;
+	t3 = NULL;
+	val = 0;
 	if (ac == 5 || ac == 9)
 	{
 		t1 = assign_tuple(&av[1]);
 		if (ac == 9)
 			t2 = assign_tuple(&av[5]);
+		t3 = vector_normalize(t1);
+		print_tuple(t3);
+		//val = vector_normalize(t1);
+		//printf("%g\n", val);
 	}
 	else
 		printf("Send arguments: x, y, z, and w\n");
@@ -50,8 +58,11 @@ t_tuple	*assign_tuple(char **av)
 	while (av[i] && i < 4)
 	{
 		x = ft_atod(av[i]);
+		i++;
 		y = ft_atod(av[i]);
+		i++;
 		z = ft_atod(av[i]);
+		i++;
 		w = ft_atod(av[i]);
 		i++;
 	}
@@ -114,8 +125,11 @@ bool	ft_isequal(double d1, double d2)
 	return (false);
 }
 
-void	error_exit(void)
+void	error_exit(int per)
 {
-	perror("Error: ");
+	if (per == 1)
+	{
+		perror("Error: ");
+	}
 	exit(1);
 }

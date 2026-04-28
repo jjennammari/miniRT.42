@@ -6,6 +6,8 @@ t_tuple	*sum_tuple(t_tuple *t1, t_tuple *t2);
 t_tuple	*subtract_tuple(t_tuple *t1, t_tuple *t2);
 t_tuple	*scalar_multiply_tuple(t_tuple *tuple, double scalar);
 t_tuple	*scalar_divide_tuple(t_tuple *tuple, double scalar);
+double	vector_magnitude(t_tuple *v);
+t_tuple	*vector_normalize(t_tuple *t);
 
 t_tuple	*create_tuple(double x, double y, double z, double w)
 {
@@ -13,7 +15,7 @@ t_tuple	*create_tuple(double x, double y, double z, double w)
 
 	new_tuple = malloc(sizeof(t_tuple));
 	if (!new_tuple)
-		error_exit();
+		error_exit(1);
 	new_tuple->x = x;
 	new_tuple->y = y;
 	new_tuple->z = z;
@@ -87,7 +89,7 @@ t_tuple	*scalar_divide_tuple(t_tuple *tuple, double scalar)
 	double	div_w;
 
 	if (fabs(scalar) < EPSILON)
-		error_exit();
+		error_exit(1);
 	div_x = tuple->x / scalar;
 	div_y = tuple->y / scalar;
 	div_z = tuple->z / scalar;
@@ -96,10 +98,44 @@ t_tuple	*scalar_divide_tuple(t_tuple *tuple, double scalar)
 	return (new_tuple);
 }
 
-double	vector_magnitude(t_tuple *v)
+double	vector_magnitude(t_tuple *t)
 {
-	double	mag;
+	double	magn;
+	double	x;
+	double	y;
+	double	z;
 
-	mag = sqrt(v->x * v->x + v->y * v->y + v->z * v->z + v->w * v->w);
-	return (mag);
+	if (ft_isequal(t->w, 1))
+	{
+		printf("Error: sent point instead of vector to vector_magnitude\n");
+		error_exit(0);
+	}
+	x = t->x * t->x;
+	y = t->y * t->y;
+	z = t->z * t->z;
+	magn = sqrt(x + y + z);
+	magn *= 4;
+	return (magn);
+}
+
+t_tuple	*vector_normalize(t_tuple *t)
+{
+	double	magn;
+	double	x;
+	double	y;
+	double	z;
+	double	w;
+
+	if (ft_isequal(t->w, 1))
+	{
+		printf("Error: sent point instead of vector to vector_normalize\n");
+		error_exit(0);
+	}
+	magn = vector_magnitude(t);
+	magn /= 4;
+	x = t->x / magn;
+	y = t->y / magn;
+	z = t->z / magn;
+	w = t->w / magn;
+	return (create_tuple(x, y, z, w));
 }
