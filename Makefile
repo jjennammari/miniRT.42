@@ -16,7 +16,7 @@ LIBFT = libft/libft.a
 LIBFT_H = libft/include
 
 # Source files
-FILES = main.c tuple.c
+FILES = main.c tuple_creation.c tuple_operation.c
 
 # Fullpath for source and objects
 SRC := $(addprefix $(SRC_DIR)/,$(FILES))
@@ -26,7 +26,7 @@ OBJ := $(addprefix $(BUILD_DIR)/,$(FILES:.c=.o))
 TEST = test_miniRT
 TEST_SRC_DIR = tests
 TEST_BUILD_DIR = test_build
-TEST_FILES = main.c tuple_test.c tuple.c
+TEST_FILES = test.c test_tuple.c tuple_creation.c tuple_operation.c
 TEST_SRC := $(addprefix $(TEST_SRC_DIR)/,$(TEST_FILES))
 TEST_OBJ := $(addprefix $(TEST_BUILD_DIR)/,$(TEST_FILES:.c=.o))
 
@@ -62,10 +62,14 @@ debug: fclean all
 # Test Rules
 test: $(TEST)
 
-$(TEST): fclean $(TEST_OBJ)
-	$(CC) $(CFLAGS) $(TEST_OBJ) -o $(TEST)
-	./$(TEST)
-$(TEST): fclean
+$(TEST): debug copy fclean $(TEST_OBJ)
+	$(CC) $(CFLAGS) $(TEST_OBJ) -I./src -o $(TEST)
+	valgrind ./$(TEST)
+	$(RM) $(addprefix $(TEST_SRC_DIR)/,$(FILES))
+	make fclean
+
+copy:
+	cp -r src/. tests/
 
 $(TEST_BUILD_DIR)/%.o: $(TEST_SRC_DIR)/%.c | $(TEST_BUILD_DIR)
 	$(CC) $(CFLAGS) -I$(INCLUDE_DIR) -c $< -o $@
