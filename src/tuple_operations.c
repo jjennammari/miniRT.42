@@ -19,7 +19,10 @@ t_tuple	*scalar_divide_tuple(t_tuple *tuple, double scalar);
 double	vector_magnitude(t_tuple *v);
 t_tuple	*vector_normalize(t_tuple *t);
 
-
+/* Sum tuple sums the values of two tuples, creates a new tuple with those
+ * values and returns that new tuple. 
+ * This function can be used for summing a point and vector together to find
+ * out where is the next point after following that vector from given point. */
 t_tuple	*sum_tuple(t_tuple *t1, t_tuple *t2)
 {
 	t_tuple	*new_tuple;
@@ -36,6 +39,14 @@ t_tuple	*sum_tuple(t_tuple *t1, t_tuple *t2)
 	return (new_tuple);
 }
 
+/* Subtract tuple takes two tuples and subtracks t2 values from t1 values,
+ * creates new tuple with those values and returns it.
+ * This function can be used to:
+ * - find the vector pointing from t2 to t1 by subtracting between two points
+ * - find a vector from current point to previous point by subtracting vector from
+ *   current point
+ * - create a vector representing the change between two vectors by sybtracting
+ *   them from each others. */
 t_tuple	*subtract_tuple(t_tuple *t1, t_tuple *t2)
 {
 	t_tuple	*new_tuple;
@@ -52,6 +63,31 @@ t_tuple	*subtract_tuple(t_tuple *t1, t_tuple *t2)
 	return (new_tuple);
 }
 
+/* Negating tuple is used to know the opposite of vector. It subtracts the
+ * tuple values from 0 to get the opposite values, creates a new vector with
+ * them and returns it.
+ * When you have a vector that points from surface towards to light source,
+ * this can be useful when needed to know which vector points from the light
+ * source back to the surface. */
+t_tuple	*negate_tuple(t_tuple *v)
+{
+	t_tuple	*opposite_vector;
+	double	x;
+	double	y;
+	double	z;
+	double	w;
+
+	x = 0 - v->x;
+	y = 0 - v->y;
+	z = 0 - v->z;
+	w = 0 - v->w;
+	opposite_vector = create_tuple(x, y, z, 0);
+	return (opposite_vector);
+}
+
+/* Scalar multiply means to multiply all tuple values with specific scalar
+ * value given, creates a new tuple with those values and returns it.
+ * This function is used when needed to find where the ray intersects sphere.*/
 t_tuple	*scalar_multiply_tuple(t_tuple *tuple, double scalar)
 {
 	t_tuple	*new_tuple;
@@ -68,6 +104,9 @@ t_tuple	*scalar_multiply_tuple(t_tuple *tuple, double scalar)
 	return (new_tuple);
 }
 
+/* Scalar divide means to multiply all tuple values with specific scalar
+ * value given, creates a new tuple with those values and returns it.
+ * This function is used when needed to find where the ray intersects sphere.*/
 t_tuple	*scalar_divide_tuple(t_tuple *tuple, double scalar)
 {
 	t_tuple	*new_tuple;
@@ -86,6 +125,9 @@ t_tuple	*scalar_divide_tuple(t_tuple *tuple, double scalar)
 	return (new_tuple);
 }
 
+/* Vector magnitude makes sure vector is sent instead of a point, counts
+ * the distance of a vector by first taking the potens by itself, adding
+ * all values together and counting the square root of that value.*/
 double	vector_magnitude(t_tuple *t)
 {
 	double	magn;
@@ -106,13 +148,17 @@ double	vector_magnitude(t_tuple *t)
 	return (magn);
 }
 
+/* Vector normalize makes sure vector is sent instead of a point, divides each
+ * vector value with vector's magnitude, creates a new vector with the values
+ * and returns it.
+ * This function can be used to transfere arbitrary vector to a unit vector. That
+ * is common when wanted to for example avoid shadow acne. */
 t_tuple	*vector_normalize(t_tuple *t)
 {
 	double	magn;
 	double	x;
 	double	y;
 	double	z;
-	double	w;
 
 	if (ft_isequal(t->w, 1))
 	{
@@ -124,6 +170,18 @@ t_tuple	*vector_normalize(t_tuple *t)
 	x = t->x / magn;
 	y = t->y / magn;
 	z = t->z / magn;
-	w = t->w / magn;
-	return (create_tuple(x, y, z, w));
+	return (create_tuple(x, y, z, 0));
 }
+
+/* Dot product takes two vectors, calculates their scalar value and returns it.
+ * This function is used when:
+ * - intersecting ways with objects
+ * - coputing the shading on a surface
+ * How to interpret:
+ * - smaller the result, bigger the angle between vectors
+ * - given two unti vectors:
+ *   - dot product of 1 means they are identical
+ *   - dot product of -1 means they point opposite directions
+ *   - dot product is the cos angle between them*/
+
+/* */
