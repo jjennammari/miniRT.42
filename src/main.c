@@ -14,6 +14,9 @@
 
 int	main(int ac, char **av)
 {
+	void	*mlx;
+
+	mlx = mlx_init();
 	if (ac == 17)
 		test_tick(av);
 	else if (ac == 9)
