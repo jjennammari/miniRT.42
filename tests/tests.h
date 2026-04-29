@@ -1,6 +1,8 @@
 #ifndef TESTS_H
 # define TESTS_H
 
+# include "minirt.h"
+
 int	test_new_tuple(void);
 int	test_new_point(void);
 int	test_new_vector(void);

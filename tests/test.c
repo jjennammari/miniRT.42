@@ -1,4 +1,3 @@
-#include "minirt.h"
 #include "tests.h"
 
 void	run_test(const char *test_msg, int (*test)());
