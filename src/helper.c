@@ -1,4 +1,4 @@
-#include "minirt.h"
+#include "../include/minirt.h"
 
 double	ft_atod(char *str);
 bool	ft_isspace(char c);

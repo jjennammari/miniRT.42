@@ -5,9 +5,9 @@
 # include <stdlib.h> // malloc
 # include <stdbool.h> // booleans
 # include <unistd.h> // NULL
-#include <math.h> // fabs, sqrt
-# include "types.h"
+# include <math.h> // fabs, sqrt
 /* cc math with -lm */
+# include "types.h"
 
 # ifndef EPSILON
 #  define EPSILON 0.00001
@@ -25,6 +25,7 @@ t_tuple	*create_tuple(double x, double y, double z, double w);
 t_tuple *create_point(double x, double y, double z);
 t_tuple *create_vector(double x, double y, double z);
 void	print_tuple(t_tuple *tuple);
+void	tick(t_environment *env, t_projectile *proj);
 
 /* tuple_operations_1.c */
 t_tuple	*sum_tuple(t_tuple *t1, t_tuple *t2);
@@ -38,5 +39,9 @@ double	vector_magnitude(t_tuple *v);
 t_tuple	*vector_normalize(t_tuple *t);
 double	dot_product(t_tuple *v1, t_tuple *v2);
 t_tuple	*cross_product(t_tuple *t1, t_tuple *t2);
+
+/* test_jenna.c */
+void	test_operations(int ac, char **av);
+void	test_tick(char **av);
 
 #endif // MINIRT_H

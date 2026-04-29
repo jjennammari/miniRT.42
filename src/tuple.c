@@ -1,9 +1,10 @@
-#include "minirt.h"
+#include "../include/minirt.h"
 
 t_tuple	*create_tuple(double x, double y, double z, double w);
 t_tuple *create_point(double x, double y, double z);
 t_tuple *create_vector(double x, double y, double z);
 void	print_tuple(t_tuple *tuple);
+void	tick(t_environment *env, t_projectile *proj);
 
 t_tuple	*create_tuple(double x, double y, double z, double w)
 {
@@ -36,4 +37,22 @@ void	print_tuple(t_tuple *tuple)
 	printf("z = %g\n", tuple->z);
 	printf("w = %g\n", tuple->w);
 	printf("\n");
+}
+
+void	tick(t_environment *env, t_projectile *proj)
+{
+	if (ft_isequal(proj->position->w, 0))
+	{
+		printf("Error: position in tick should be a point");
+		error_exit(0);
+	}
+	if (ft_isequal(proj->velocity->w, 1) || ft_isequal(env->gravity->w, 1) ||
+		ft_isequal(env->wind->w, 1))
+	{
+		printf("Error: position in tick should be a point");
+		error_exit(0);
+	}
+	proj->position = sum_tuple(proj->position, proj->velocity);
+	proj->velocity = sum_tuple(proj->velocity, env->gravity);
+	proj->velocity = sum_tuple(proj->velocity, env->wind);
 }

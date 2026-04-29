@@ -1,4 +1,4 @@
-#include "minirt.h"
+#include "../include/minirt.h"
 
 /* Vector magnitude makes sure vector is sent instead of a point, counts
  * the distance of a vector by first taking the potens by itself, adding
