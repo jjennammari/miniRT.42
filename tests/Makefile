@@ -28,7 +28,7 @@ OBJ = $(TEST_OBJ) $(PROJ_OBJ)
 all: $(NAME)
 
 $(NAME): $(ROOT_DIR)/$(LIBFT_DIR)/libft.a $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -L$(LIBFT_DIR) -lft -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJ) -L$(LIBFT_DIR) -lft -lm -o $(NAME)
 
 # Libft
 $(ROOT_DIR)/$(LIBFT_DIR)/libft.a:

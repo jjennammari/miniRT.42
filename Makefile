@@ -16,8 +16,8 @@ LIBFT = libft/libft.a
 LIBFT_H = libft/include
 
 # Source files
-FILES = main.c tuple_creation.c tuple_operations_1.c tuple_operations_2.c \
-	float_helper.c
+FILES = main.c tuple.c tuple_operations_1.c tuple_operations_2.c \
+	helper.c
 
 # Fullpath for source and objects
 SRC := $(addprefix $(SRC_DIR)/,$(FILES))
@@ -27,7 +27,7 @@ OBJ := $(addprefix $(BUILD_DIR)/,$(FILES:.c=.o))
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -Llibft -lft -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJ) -Llibft -lft -lm -o $(NAME)
 
 $(LIBFT):
 	make -C libft all

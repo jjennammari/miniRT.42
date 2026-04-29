@@ -5,10 +5,10 @@
 
 typedef struct	s_tuple
 {
-	float	x;
-	float	y;
-	float	z;
-	int		w;
+	double	x;
+	double	y;
+	double	z;
+	double	w;
 }	t_tuple;
 
 #endif // TYPES_H
