@@ -16,7 +16,7 @@ CC = cc
 CFLAGS = -Wall -Werror -Wextra
 RM = rm -rf
 
-INCLUDES_DIR = ./includes
+INCLUDE_DIR = ./include
 SRC_DIR = ./src
 BUILD_DIR = ./build
 
@@ -89,4 +89,4 @@ re: fclean all
 
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(BUILD_DIR)
-	$(CC) $(CFLAGS) -I$(INCLUDES_DIR) -c $< -o $@
+	$(CC) $(CFLAGS) -I$(INCLUDE_DIR) -c $< -o $@

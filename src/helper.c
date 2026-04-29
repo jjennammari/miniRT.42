@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   helper.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jemustaj <jemustaj@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/29 12:16:15 by jemustaj          #+#    #+#             */
+/*   Updated: 2026/04/29 12:18:10 by jemustaj         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/minirt.h"
 
 double	ft_atod(char *str);
 bool	ft_isspace(char c);
-bool	ft_isdigit(char c);
 bool	ft_isequal(double d1, double d2);
 void	error_exit(int per);
+t_tuple	*assign_tuple(char **av);
 
 double	ft_atod(char *str)
 {
@@ -48,13 +60,6 @@ bool	ft_isspace(char c)
 	return (false);
 }
 
-bool	ft_isdigit(char c)
-{
-	if (c >= '0' && c <= '9')
-		return (true);
-	return (false);
-}
-
 bool	ft_isequal(double d1, double d2)
 {
 	if (fabs(d1 - d2) < EPSILON)
@@ -69,4 +74,27 @@ void	error_exit(int per)
 		perror("Error: ");
 	}
 	exit(1);
+}
+
+t_tuple	*assign_tuple(char **av)
+{
+	double	x;
+	double	y;
+	double	z;
+	double	w;
+	int		i;
+
+	i = 0;
+	while (av[i] && i < 4)
+	{
+		x = ft_atod(av[i]);
+		i++;
+		y = ft_atod(av[i]);
+		i++;
+		z = ft_atod(av[i]);
+		i++;
+		w = ft_atod(av[i]);
+		i++;
+	}
+	return (create_tuple(x, y, z, w));
 }

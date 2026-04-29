@@ -52,9 +52,11 @@ run: all
 
 clean:
 	$(RM) $(BUILD_DIR)
+	make -C ../libft clean
 
 fclean: clean
 	$(RM) $(NAME)
+	make -C ../libft fclean
 
 re: fclean all
 
