@@ -16,7 +16,7 @@ int	main(int ac, char **av)
 {
 	if (ac == 17)
 		test_tick(av);
-	else if (ac == 9)
+	else if (ac == 5 || ac == 9)
 		test_operations(ac, av);
 	else
 		printf("Send arguments: x, y, z, and w\n");
