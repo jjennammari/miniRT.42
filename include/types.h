@@ -1,8 +1,6 @@
 #ifndef TYPES_H
 # define TYPES_H
 
-# include "minirt.h"
-
 typedef struct	s_tuple
 {
 	double	x;
@@ -10,5 +8,17 @@ typedef struct	s_tuple
 	double	z;
 	double	w;
 }	t_tuple;
+
+typedef struct	s_projectile
+{
+	t_tuple	*position;
+	t_tuple	*velocity;
+}	t_projectile;
+
+typedef struct	s_environment
+{
+	t_tuple	*gravity;
+	t_tuple	*wind;
+}	t_environment;
 
 #endif // TYPES_H

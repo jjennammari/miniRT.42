@@ -10,31 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "../include/minirt.h"
 
 t_tuple	*assign_tuple(char **av);
 
 int	main(int ac, char **av)
 {
-	t_tuple	*t1;
-	t_tuple	*t2;
-	t_tuple	*t3;
-	double	val;
+	t_projectile	*new;
 
-	t1 = NULL;
-	t2 = NULL;
-	t3 = NULL;
-	val = 0;
 	if (ac == 5 || ac == 9)
-	{
-		t1 = assign_tuple(&av[1]);
-		if (ac == 9)
-			t2 = assign_tuple(&av[5]);
-		t3 = vector_normalize(t1);
-		print_tuple(t3);
-		//val = vector_normalize(t1);
-		//printf("%g\n", val);
-	}
+		test_operations(ac, av);
 	else
 		printf("Send arguments: x, y, z, and w\n");
 	return (0);
