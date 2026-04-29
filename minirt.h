@@ -32,6 +32,8 @@ void	error_exit(int per);
 /* tuple.c */
 t_tuple	*create_tuple(double x, double y, double z, double w);
 void	print_tuple(t_tuple *tuple);
+
+/* tuple_operations.c */
 t_tuple	*sum_tuple(t_tuple *t1, t_tuple *t2);
 t_tuple	*subtract_tuple(t_tuple *t1, t_tuple *t2);
 t_tuple	*scalar_multiply_tuple(t_tuple *tuple, double scalar);
