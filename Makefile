@@ -16,7 +16,8 @@ LIBFT = libft/libft.a
 LIBFT_H = libft/include
 
 # Source files
-FILES = main.c tuple_creation.c tuple_operation.c float_helper.c
+FILES = main.c tuple_creation.c tuple_operations_1.c tuple_operations_2.c \
+	float_helper.c
 
 # Fullpath for source and objects
 SRC := $(addprefix $(SRC_DIR)/,$(FILES))
@@ -40,12 +41,12 @@ $(BUILD_DIR):
 clean:
 	$(RM) $(BUILD_DIR)
 	make -C libft clean
-	make -C tests clean # Pass clean down to tests
+	make -C tests clean
 
 fclean: clean
 	$(RM) $(NAME)
 	make -C libft fclean
-	make -C tests fclean # Pass fclean down to tests
+	make -C tests fclean
 
 re: fclean all
 
@@ -55,6 +56,6 @@ debug: fclean all
 
 # Test rule
 test:
-	make -C tests run FILES="$(FILES)"
+	make -C tests run
 
 .PHONY: all clean fclean re debug test

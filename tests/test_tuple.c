@@ -181,3 +181,45 @@ int	test_divide_tuple(void)
 
 	return (0);
 }
+
+int	test_dot_product(void)
+{
+	t_tuple	*t1;
+	t_tuple	*t2;
+	double	res;
+
+	t1 = new_vector(1, 2, 3);
+	t2 = new_vector(2, 3, 4);
+	res = dot_product(t1, t2);
+	free(t1);
+	free(t2);
+	if (res != 20)
+		return (-1);
+	return (0);
+}
+
+int test_cross_product(void)
+{
+	t_tuple	*t1;
+	t_tuple	*t2;
+	t_tuple *res;
+
+	t1 = new_vector(1, 2, 3);
+	t2 = new_vector(2, 3, 4);
+	res = cross_product(t1, t2);
+	free(t1);
+	free(t2);
+	if (!res || res->x != -1 || res->y != 2 || res->z != -1 || res->w != 0)
+		return (-1);
+	free(res);
+
+	t1 = new_vector(1, 2, 3);
+	t2 = new_vector(2, 3, 4);
+	res = cross_product(t2, t1);
+	free(t1);
+	free(t2);
+	if (!res || res->x != 1 || res->y != -2 || res->z != 1 || res->w != 0)
+		return (-1);
+	free(res);
+	return (0);
+}

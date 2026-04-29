@@ -17,7 +17,7 @@ RM = rm -rf
 
 # Files
 TEST_FILES = test.c test_tuple.c
-PROJ_FILES = $(filter-out main.c, $(FILES))
+PROJ_FILES = $(filter-out main.c, $(shell ls ../src))
 
 # Object targets
 TEST_OBJ = $(addprefix $(BUILD_DIR)/, $(TEST_FILES:.c=.o))

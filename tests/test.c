@@ -13,6 +13,8 @@ int	main(void)
 	run_test("negate_tuple", &test_negate_tuple);
 	run_test("scalar_tuple", &test_scalar_tuple);
 	run_test("divide_tuple", &test_divide_tuple);
+	run_test("dot_product", &test_dot_product);
+	run_test("cross_product", &test_cross_product);
 	printf("\nTests finished\n-------------------------\n\n");
 }
 

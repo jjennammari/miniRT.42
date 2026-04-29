@@ -16,6 +16,8 @@ t_tuple	*subtract_tuple(t_tuple *t1, t_tuple *t2);
 t_tuple	*negate_tuple(t_tuple *t1);
 t_tuple	*scalar_tuple(float scalar, t_tuple *t1);
 t_tuple	*divide_tuple(float scalar, t_tuple *t1);
+double	dot_product(t_tuple *v1, t_tuple *v2);
+t_tuple	*cross_product(t_tuple *t1, t_tuple *t2);
 
 int		equal_floats(float f1, float t2);
 
