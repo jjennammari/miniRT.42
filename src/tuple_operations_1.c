@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tuple_operations.c                                 :+:      :+:    :+:   */
+/*   tuple_operations_1.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jemustaj <jemustaj@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -36,8 +36,8 @@ t_tuple	*sum_tuple(t_tuple *t1, t_tuple *t2)
  * creates new tuple with those values and returns it.
  * This function can be used to:
  * - find the vector pointing from t2 to t1 by subtracting between two points
- * - find a vector from current point to previous point by subtracting vector from
- *   current point
+ * - find a vector from current point to previous point by subtracting vector
+ *   from current point
  * - create a vector representing the change between two vectors by sybtracting
  *   them from each others. */
 t_tuple	*subtract_tuple(t_tuple *t1, t_tuple *t2)

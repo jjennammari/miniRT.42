@@ -41,12 +41,10 @@ $(BUILD_DIR):
 clean:
 	$(RM) $(BUILD_DIR)
 	make -C libft clean
-	make -C tests clean
 
 fclean: clean
 	$(RM) $(NAME)
 	make -C libft fclean
-	make -C tests fclean
 
 re: fclean all
 

@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   tuple.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jemustaj <jemustaj@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/29 12:16:15 by jemustaj          #+#    #+#             */
+/*   Updated: 2026/04/29 12:18:10 by jemustaj         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/minirt.h"
 
 t_tuple	*create_tuple(double x, double y, double z, double w);
-t_tuple *create_point(double x, double y, double z);
-t_tuple *create_vector(double x, double y, double z);
+t_tuple	*create_point(double x, double y, double z);
+t_tuple	*create_vector(double x, double y, double z);
 void	print_tuple(t_tuple *tuple);
 void	tick(t_environment *env, t_projectile *proj);
 
@@ -20,12 +32,12 @@ t_tuple	*create_tuple(double x, double y, double z, double w)
 	return (new_tuple);
 }
 
-t_tuple *create_point(double x, double y, double z)
+t_tuple	*create_point(double x, double y, double z)
 {
 	return (create_tuple(x, y, z, 1.0));
 }
 
-t_tuple *create_vector(double x, double y, double z)
+t_tuple	*create_vector(double x, double y, double z)
 {
 	return (create_tuple(x, y, z, 0));
 }
@@ -46,8 +58,8 @@ void	tick(t_environment *env, t_projectile *proj)
 		printf("Error: position in tick should be a point");
 		error_exit(0);
 	}
-	if (ft_isequal(proj->velocity->w, 1) || ft_isequal(env->gravity->w, 1) ||
-		ft_isequal(env->wind->w, 1))
+	if (ft_isequal(proj->velocity->w, 1) || ft_isequal(env->gravity->w, 1)
+		|| ft_isequal(env->wind->w, 1))
 	{
 		printf("Error: position in tick should be a point");
 		error_exit(0);

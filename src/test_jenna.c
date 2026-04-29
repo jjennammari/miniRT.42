@@ -20,7 +20,7 @@ void	test_operations(int ac, char **av)
 	t_tuple			*t1;
 	t_tuple			*t2;
 	t_tuple			*t3;
-	
+
 	t1 = assign_tuple(&av[1]);
 	if (ac == 9)
 		t2 = assign_tuple(&av[5]);

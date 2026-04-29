@@ -7,6 +7,7 @@
 # include <unistd.h> // NULL
 # include <math.h> // fabs, sqrt
 /* cc math with -lm */
+# include "libft.h"
 # include "types.h"
 
 # ifndef EPSILON
@@ -15,6 +16,8 @@
 
 /* main.c */
 t_tuple	*assign_tuple(char **av);
+
+/* helper.c */
 double	ft_atod(char *str);
 bool	ft_isspace(char c);
 bool	ft_isequal(double d1, double d2);

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   tuple_operations_2.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jemustaj <jemustaj@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/29 12:16:15 by jemustaj          #+#    #+#             */
+/*   Updated: 2026/04/29 12:18:10 by jemustaj         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/minirt.h"
 
 /* Vector magnitude makes sure vector is sent instead of a point, counts
@@ -71,7 +83,7 @@ double	dot_product(t_tuple *v1, t_tuple *v2)
 /* */
 t_tuple	*cross_product(t_tuple *t1, t_tuple *t2)
 {
-	t_tuple *vec;
+	t_tuple	*vec;
 
 	vec = create_vector(0, 0, 0);
 	if (!vec)
