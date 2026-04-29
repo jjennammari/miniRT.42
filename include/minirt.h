@@ -7,12 +7,16 @@
 # include <unistd.h> // NULL
 # include <math.h> // fabs, sqrt
 /* cc math with -lm */
+# include <mlx.h>
 # include "libft.h"
 # include "types.h"
 
 # ifndef EPSILON
 #  define EPSILON 0.00001
 # endif
+
+# define WIDTH 800
+# define HEIGHT 600
 
 /* main.c */
 t_tuple	*assign_tuple(char **av);
