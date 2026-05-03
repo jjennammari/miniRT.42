@@ -12,6 +12,12 @@
 
 #include "../include/minirt.h"
 
+double	vector_magnitude(t_tuple *t);
+t_tuple	*vector_normalize(t_tuple *t);
+double	dot_product(t_tuple *v1, t_tuple *v2);
+t_tuple	*cross_product(t_tuple *t1, t_tuple *t2);
+
+
 /* Vector magnitude makes sure vector is sent instead of a point, counts
  * the distance of a vector by first taking the potens by itself, adding
  * all values together and counting the square root of that value.*/

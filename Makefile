@@ -18,7 +18,7 @@ LIBFT_H = libft/include
 
 # Source files
 FILES = main.c tuple.c tuple_operations_1.c tuple_operations_2.c \
-	helper.c test_jenna.c
+	helper.c test_jenna.c setup_rt.c
 
 # Fullpath for source and objects
 SRC := $(addprefix $(SRC_DIR)/,$(FILES))

@@ -1,6 +1,22 @@
 #ifndef TYPES_H
 # define TYPES_H
 
+typedef struct s_data
+{
+	void	*img;
+	char	*addr;
+	int		bpp;
+	int		ln_len;
+	int		endian;
+}	t_data;
+
+typedef struct s_rt
+{
+	void		*mlx;
+	void		*mlx_win;
+	t_data		data;
+}	t_rt;
+
 typedef struct	s_tuple
 {
 	double	x;
