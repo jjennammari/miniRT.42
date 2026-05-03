@@ -18,7 +18,7 @@ LIBFT_H = libft/include
 
 # Source files
 FILES = main.c tuple.c tuple_operations_1.c tuple_operations_2.c \
-	helper.c test_jenna.c
+	helper.c test_jenna.c setup_rt.c canvas.c
 
 # Fullpath for source and objects
 SRC := $(addprefix $(SRC_DIR)/,$(FILES))
@@ -28,13 +28,13 @@ OBJ := $(addprefix $(BUILD_DIR)/,$(FILES:.c=.o))
 all: $(NAME)
 
 $(NAME): mlx $(LIBFT) $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -Llibft -lft -L$(MLX_DIR) -lmlx -L/usr/lib -lXext -lX11 -lm -lz -O3 -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJ) -Llibft -lft -L$(MLX_DIR) -lmlx -L/usr/lib -lXext -lX11 -lm -lz -o $(NAME)
 
 $(LIBFT):
 	make -C libft all
 
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c | $(BUILD_DIR)
-	$(CC) $(CFLAGS) -I$(INCLUDE_DIR) -I$(LIBFT_H) -I/usr/include -I$(MLX_DIR) -O3 -c $< -o $@
+	$(CC) $(CFLAGS) -I$(INCLUDE_DIR) -I$(LIBFT_H) -I/usr/include -I$(MLX_DIR) -c $< -o $@
 
 $(BUILD_DIR):
 	mkdir -p $(BUILD_DIR)

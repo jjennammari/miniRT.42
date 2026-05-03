@@ -14,14 +14,16 @@
 
 int	main(int ac, char **av)
 {
-	void	*mlx;
+	t_rt	*rt;
 
-	mlx = mlx_init();
+	rt = init_rt();
 	if (ac == 17)
-		test_tick(av);
-	else if (ac == 5 || ac == 9)
+		test_tick(av, NULL);
+	else if (ac == 9)
 		test_operations(ac, av);
 	else
 		printf("Send arguments: x, y, z, and w\n");
+	mlx_loop_hook(rt->mlx, loop, rt);
+	mlx_loop(rt->mlx);
 	return (0);
 }

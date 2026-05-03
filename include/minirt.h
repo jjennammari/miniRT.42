@@ -15,8 +15,10 @@
 #  define EPSILON 0.00001
 # endif
 
-# define WIDTH 800
-# define HEIGHT 600
+#define W 800
+#define H 600
+
+#define ESC 65307
 
 /* main.c */
 t_tuple	*assign_tuple(char **av);
@@ -49,6 +51,15 @@ t_tuple	*cross_product(t_tuple *t1, t_tuple *t2);
 
 /* test_jenna.c */
 void	test_operations(int ac, char **av);
-void	test_tick(char **av);
+void	test_tick(char **av, t_rt *rt);
+
+/* setup_rt.c */
+t_rt	*init_rt(void);
+int		close_rt(t_rt *rt);
+int		key_press(int keysym, t_rt *rt);
+int		loop(t_rt *rt);
+
+/* canvas.c */
+void	create_canvas(t_rt *rt);
 
 #endif // MINIRT_H
