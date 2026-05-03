@@ -17,7 +17,6 @@ t_tuple	*vector_normalize(t_tuple *t);
 double	dot_product(t_tuple *v1, t_tuple *v2);
 t_tuple	*cross_product(t_tuple *t1, t_tuple *t2);
 
-
 /* Vector magnitude makes sure vector is sent instead of a point, counts
  * the distance of a vector by first taking the potens by itself, adding
  * all values together and counting the square root of that value.*/
@@ -98,4 +97,15 @@ t_tuple	*cross_product(t_tuple *t1, t_tuple *t2)
 	vec->y = t1->z * t2->x - t1->x * t2->z;
 	vec->z = t1->x * t2->y - t1->y * t2->x;
 	return (vec);
+}
+
+t_tuple	*hadamard_product(t_tuple *c1, t_tuple *c2)
+{
+	t_tuple	*col;
+
+	col = create_tuple(0, 0, 0, 2);
+	col->x = c1->x * c2->x;
+	col->y = c1->y * c2->y;
+	col->z = c1->z * c2->z;
+	return (col);
 }

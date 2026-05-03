@@ -12,7 +12,6 @@
 
 #include "../include/minirt.h"
 
-
 t_tuple	*sum_tuple(t_tuple *t1, t_tuple *t2);
 t_tuple	*subtract_tuple(t_tuple *t1, t_tuple *t2);
 t_tuple	*negate_tuple(t_tuple *v);
