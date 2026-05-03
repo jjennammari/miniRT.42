@@ -10,6 +10,7 @@ RM = rm -rf
 INCLUDE_DIR = ./include
 BUILD_DIR = build
 SRC_DIR = src
+MLX_DIR = minilibx-linux
 
 # Libft
 LIBFT = libft/libft.a
@@ -26,21 +27,25 @@ OBJ := $(addprefix $(BUILD_DIR)/,$(FILES:.c=.o))
 # Main rules
 all: $(NAME)
 
-$(NAME): $(LIBFT) $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -Llibft -lft -lm -o $(NAME)
+$(NAME): mlx $(LIBFT) $(OBJ)
+	$(CC) $(CFLAGS) $(OBJ) -Llibft -lft -L$(MLX_DIR) -lmlx -L/usr/lib -lXext -lX11 -lm -lz -O3 -o $(NAME)
 
 $(LIBFT):
 	make -C libft all
 
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c | $(BUILD_DIR)
-	$(CC) $(CFLAGS) -I$(INCLUDE_DIR) -I$(LIBFT_H) -c $< -o $@
+	$(CC) $(CFLAGS) -I$(INCLUDE_DIR) -I$(LIBFT_H) -I/usr/include -I$(MLX_DIR) -O3 -c $< -o $@
 
 $(BUILD_DIR):
 	mkdir -p $(BUILD_DIR)
 
+mlx:
+	make -C $(MLX_DIR)
+
 clean:
 	$(RM) $(BUILD_DIR)
 	make -C libft clean
+	make -C $(MLX_DIR) clean
 
 fclean: clean
 	$(RM) $(NAME)
