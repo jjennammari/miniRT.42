@@ -12,6 +12,12 @@
 
 #include "../include/minirt.h"
 
+t_tuple	*sum_tuple(t_tuple *t1, t_tuple *t2);
+t_tuple	*subtract_tuple(t_tuple *t1, t_tuple *t2);
+t_tuple	*negate_tuple(t_tuple *v);
+t_tuple	*scalar_multiply_tuple(t_tuple *tuple, double scalar);
+t_tuple	*scalar_divide_tuple(t_tuple *tuple, double scalar);
+
 /* Sum tuple sums the values of two tuples, creates a new tuple with those
  * values and returns that new tuple. 
  * This function can be used for summing a point and vector together to find
