@@ -51,7 +51,7 @@ t_tuple	*cross_product(t_tuple *t1, t_tuple *t2);
 
 /* test_jenna.c */
 void	test_operations(int ac, char **av);
-void	test_tick(char **av);
+void	test_tick(char **av, t_rt *rt);
 
 /* setup_rt.c */
 t_rt	*init_rt(void);

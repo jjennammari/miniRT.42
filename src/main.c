@@ -18,7 +18,7 @@ int	main(int ac, char **av)
 
 	rt = init_rt();
 	if (ac == 17)
-		test_tick(av);
+		test_tick(av, NULL);
 	else if (ac == 9)
 		test_operations(ac, av);
 	else

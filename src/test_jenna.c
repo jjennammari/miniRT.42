@@ -13,7 +13,7 @@
 #include "../include/minirt.h"
 
 void	test_operations(int ac, char **av);
-void	test_tick(char **av);
+void	test_tick(char **av, t_rt *rt);
 
 void	test_operations(int ac, char **av)
 {
@@ -30,11 +30,18 @@ void	test_operations(int ac, char **av)
 	//printf("%g\n", val);
 }
 
-void	test_tick(char **av)
+void	test_tick(char **av, t_rt *rt)
 {
 	t_environment	env;
 	t_projectile	proj;
 
+	if (rt)
+	{
+		rt->proj->position = assign_tuple(&av[1]);
+		rt->proj->velocity = vector_normalize(assign_tuple(&av[5]));
+		rt->envi->gravity = assign_tuple(&av[9]);
+		rt->envi->wind = assign_tuple(&av[13]);
+	}
 	proj.position = assign_tuple(&av[1]);
 	print_tuple(proj.position);
 	proj.velocity = vector_normalize(assign_tuple(&av[5]));
