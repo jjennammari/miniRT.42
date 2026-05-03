@@ -59,4 +59,7 @@ int		close_rt(t_rt *rt);
 int		key_press(int keysym, t_rt *rt);
 int		loop(t_rt *rt);
 
+/* canvas.c */
+void	create_canvas(t_rt *rt);
+
 #endif // MINIRT_H

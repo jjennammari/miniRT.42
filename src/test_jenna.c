@@ -24,7 +24,7 @@ void	test_operations(int ac, char **av)
 	t1 = assign_tuple(&av[1]);
 	if (ac == 9)
 		t2 = assign_tuple(&av[5]);
-	t3 = create_tuple(t1->x, t1->y, t1->z, t1->w);
+	t3 = vector_normalize(t1);
 	print_tuple(t3);
 	//val = vector_normalize(t1);
 	//printf("%g\n", val);

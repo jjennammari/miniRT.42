@@ -23,7 +23,6 @@ typedef struct	s_tuple
 	double	y;
 	double	z;
 	double	w;
-	double	c;
 }	t_tuple;
 
 typedef struct	s_projectile

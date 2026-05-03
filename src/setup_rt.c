@@ -48,7 +48,7 @@ int	key_press(int keysym, t_rt *rt)
 
 int	loop(t_rt *rt)
 {
-	(void)rt;
+	create_canvas(rt);
 	usleep(1000);
 	return (0);
 }
