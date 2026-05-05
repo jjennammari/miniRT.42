@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "../include/minirt.h"
-#include "../minilibx_opengl_20191021/mlx.h"
+#include "../minilibx-mac/mlx.h"
 
 t_rt	*init_rt(void);
 int		close_rt(t_rt *rt);
