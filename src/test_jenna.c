@@ -18,10 +18,15 @@ void	test_tick(char **av, t_rt *rt);
 void	test_operations(int ac, char **av)
 {
 	t_tuple			*t1;
+	t_tuple			*t2;
 	t_tuple			*t3;
 
-	(void)ac;
 	t1 = assign_tuple(&av[1]);
+	if (ac == 9)
+	{
+		t2 = assign_tuple(&av[5]);
+		print_tuple(t2);
+	}
 	t3 = vector_normalize(t1);
 	print_tuple(t3);
 	//val = vector_normalize(t1);
