@@ -15,7 +15,7 @@
 #  define EPSILON 0.00001
 # endif
 
-#define W 800
+#define W 1200
 #define H 600
 
 #define ESC 65307
@@ -48,6 +48,7 @@ double	vector_magnitude(t_tuple *v);
 t_tuple	*vector_normalize(t_tuple *t);
 double	dot_product(t_tuple *v1, t_tuple *v2);
 t_tuple	*cross_product(t_tuple *t1, t_tuple *t2);
+t_tuple	*hadamard_product(t_tuple *c1, t_tuple *c2);
 
 /* test_jenna.c */
 void	test_operations(int ac, char **av);
@@ -61,5 +62,9 @@ int		loop(t_rt *rt);
 
 /* canvas.c */
 void	create_canvas(t_rt *rt);
+void	pixel_to_canvas(t_data *dt, int x, int y, t_tuple *color);
+
+/* draw.c */
+void	set_projectile(t_rt *rt);
 
 #endif // MINIRT_H
