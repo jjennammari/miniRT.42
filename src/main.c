@@ -6,7 +6,7 @@
 /*   By: jemustaj <jemustaj@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 16:08:15 by jemustaj          #+#    #+#             */
-/*   Updated: 2026/04/29 12:20:24 by jemustaj         ###   ########.fr       */
+/*   Updated: 2026/05/06 18:01:29 by jemustaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,16 @@ void	test_matrix()
 {
 	double	**m1;
 	double	**m2;
+	double	**m3;
 	
-	m1 = create_matrix(3);
-	m2 = create_matrix(3);
-	m2[0][0] = 2;
+	m1 = create_matrix(4);
+	m2 = create_matrix(4);
+	m2[0][0] = 4;
+	m1[0][1] = 3;
+	m2[1][1] = 5;
+	m3 = multiply_matrix(m1, m2);
 
-	if (!is_equal_matrix(m1, m2, 3))
-		printf("yey\n");
+	print_matrix(m3, 4);
 }
 
 void	print_matrix(double **matrix, int size)

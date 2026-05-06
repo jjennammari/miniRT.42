@@ -3,7 +3,6 @@
 double		**create_matrix(int size);
 void		base_matrix(double **matrix, int size);
 static void	free_rows(double **matrix, int i);
-bool		is_equal_matrix(double **m1, double **m2, int size);
 
 double	**create_matrix(int size)
 {
@@ -50,26 +49,6 @@ void	base_matrix(double **matrix, int size)
 		}
 		i++;
 	}
-}
-
-bool	is_equal_matrix(double **m1, double **m2, int size)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < size)
-	{
-		j = 0;
-		while (j < size)
-		{
-			if (!ft_isequal(m1[i][j], m2[i][j]))
-				return (false);
-			j++;
-		}
-		i++;
-	}
-	return (true);
 }
 
 static void	free_rows(double **matrix, int i)

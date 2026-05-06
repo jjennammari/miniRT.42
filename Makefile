@@ -27,7 +27,8 @@ endif
 
 # Source files
 FILES = main.c tuple.c tuple_operations_1.c tuple_operations_2.c \
-	helper.c test_jenna.c setup_rt.c canvas.c draw.c matrix.c
+	helper.c test_jenna.c setup_rt.c canvas.c draw.c matrix.c \
+	matrix_operations.c
 
 # Fullpath for source and objects
 SRC := $(addprefix $(SRC_DIR)/,$(FILES))
