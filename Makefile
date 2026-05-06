@@ -10,15 +10,24 @@ RM = rm -rf
 INCLUDE_DIR = ./include
 BUILD_DIR = build
 SRC_DIR = src
-MLX_DIR = minilibx-linux
 
 # Libft
 LIBFT = libft/libft.a
 LIBFT_H = libft/include
 
+UNAME_S := $(shell uname -s)
+
+ifeq ($(UNAME_S),Linux)
+    MLX_DIR = minilibx-linux
+    MLX_FLAGS = -L$(MLX_DIR) -lmlx -L/usr/lib -lXext -lX11 -lm -lz
+else ifeq ($(UNAME_S),Darwin)
+    MLX_DIR = minilibx-mac
+    MLX_FLAGS = -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit -lm -lz
+endif
+
 # Source files
 FILES = main.c tuple.c tuple_operations_1.c tuple_operations_2.c \
-	helper.c test_jenna.c setup_rt.c canvas.c
+	helper.c test_jenna.c setup_rt.c canvas.c draw.c
 
 # Fullpath for source and objects
 SRC := $(addprefix $(SRC_DIR)/,$(FILES))
@@ -28,13 +37,13 @@ OBJ := $(addprefix $(BUILD_DIR)/,$(FILES:.c=.o))
 all: $(NAME)
 
 $(NAME): mlx $(LIBFT) $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -Llibft -lft -L$(MLX_DIR) -lmlx -L/usr/lib -lXext -lX11 -lm -lz -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJ) -Llibft -lft -L$(MLX_DIR) $(MLX_FLAGS) -o $(NAME)
 
 $(LIBFT):
 	make -C libft all
 
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c | $(BUILD_DIR)
-	$(CC) $(CFLAGS) -I$(INCLUDE_DIR) -I$(LIBFT_H) -I/usr/include -I$(MLX_DIR) -c $< -o $@
+	$(CC) $(CFLAGS) -I$(INCLUDE_DIR) -I$(LIBFT_H) -I$(MLX_DIR) -c $< -o $@
 
 $(BUILD_DIR):
 	mkdir -p $(BUILD_DIR)

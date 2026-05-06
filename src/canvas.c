@@ -14,24 +14,21 @@
 
 void		create_canvas(t_rt *rt);
 static int	extract_rgb(double r, double g, double b);
-static void	pixel_to_canvas(t_data *dt, int x, int y, t_tuple *color);
+void		pixel_to_canvas(t_data *dt, int x, int y, t_tuple *color);
 
 void	create_canvas(t_rt *rt)
 {
 	t_data	*dt;
-	t_tuple	*color;
 
-	color = create_tuple(1, 1, 1, 2);
 	dt = &rt->data;
 	dt->img = mlx_new_image(rt->mlx, W, H);
 	dt->addr = mlx_get_data_addr(dt->img, &dt->bpp, &dt->ln_len, &dt->endian);
-	pixel_to_canvas(dt, 100, 100, color);
-	free(color);
+	set_projectile(rt);
 	mlx_put_image_to_window(rt->mlx, rt->mlx_win, dt->img, 0, 0);
 	mlx_destroy_image(rt->mlx, dt->img);
 }
 
-static void	pixel_to_canvas(t_data *dt, int x, int y, t_tuple *color)
+void	pixel_to_canvas(t_data *dt, int x, int y, t_tuple *color)
 {
 	char	*dst;
 	int		rgb;

@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../include/minirt.h"
+#include "../minilibx-mac/mlx.h"
 
 t_rt	*init_rt(void);
 int		close_rt(t_rt *rt);
@@ -41,11 +42,11 @@ int	close_rt(t_rt *rt)
 {
 	if (rt->mlx_win)
 		mlx_destroy_window(rt->mlx, rt->mlx_win);
-	if (rt->mlx)
+/*	if (rt->mlx) this is commented cause mac minilibx handles it by itself
 	{
 		mlx_destroy_display(rt->mlx);
 		free(rt->mlx);
-	}
+	}*/
 	if (rt)
 		free(rt);
 	exit (0);

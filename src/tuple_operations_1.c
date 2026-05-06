@@ -74,13 +74,11 @@ t_tuple	*negate_tuple(t_tuple *v)
 	double	x;
 	double	y;
 	double	z;
-	double	w;
 
 	x = 0 - v->x;
 	y = 0 - v->y;
 	z = 0 - v->z;
-	w = 0 - v->w;
-	opposite_vector = create_tuple(x, y, z, w);
+	opposite_vector = create_tuple(x, y, z, 0);
 	return (opposite_vector);
 }
 
