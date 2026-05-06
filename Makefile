@@ -21,7 +21,7 @@ ifeq ($(UNAME_S),Linux)
     MLX_DIR = minilibx-linux
     MLX_FLAGS = -L$(MLX_DIR) -lmlx -L/usr/lib -lXext -lX11 -lm -lz
 else ifeq ($(UNAME_S),Darwin)
-    MLX_DIR = minilibx_opengl_20191021
+    MLX_DIR = minilibx-mac
     MLX_FLAGS = -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit -lm -lz
 endif
 
