@@ -1,7 +1,7 @@
 #include "../include/minirt.h"
 
 double		**create_matrix(int size);
-void		base_matrix(double **matrix, int size);
+void		identity_matrix(double **matrix, int size);
 static void	free_rows(double **matrix, int i);
 
 double	**create_matrix(int size)
@@ -26,11 +26,11 @@ double	**create_matrix(int size)
 		matrix[i] = row;
 		i++;
 	}
-	base_matrix(matrix, size);
+	identity_matrix(matrix, size);
 	return (matrix);
 }
 
-void	base_matrix(double **matrix, int size)
+void	identity_matrix(double **matrix, int size)
 {
 	int	j;
 	int	i;

@@ -69,7 +69,7 @@ void	set_projectile(t_rt *rt);
 
 /* matrix.c */
 double	**create_matrix(int size);
-void	base_matrix(double **matrix, int size);
+void	identity_matrix(double **matrix, int size);
 
 /* matrix_operations.c */
 bool	is_equal_matrix(double **m1, double **m2, int size);
