@@ -15,6 +15,16 @@ CC = cc
 CFLAGS = -Wall -Werror -Wextra -g
 RM = rm -rf
 
+UNAME_S := $(shell uname -s)
+
+ifeq ($(UNAME_S),Linux)
+    MLX_DIR = minilibx-linux
+    MLX_FLAGS = -L$(MLX_DIR) -lmlx -L/usr/lib -lXext -lX11 -lm -lz
+else ifeq ($(UNAME_S),Darwin)
+    MLX_DIR = minilibx-mac
+    MLX_FLAGS = -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit -lm -lz
+endif
+
 # Files
 TEST_FILES = test.c test_tuple.c
 PROJ_FILES = $(filter-out main.c, $(shell ls ../src))
@@ -28,7 +38,7 @@ OBJ = $(TEST_OBJ) $(PROJ_OBJ)
 all: $(NAME)
 
 $(NAME): $(ROOT_DIR)/$(LIBFT_DIR)/libft.a $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -L$(LIBFT_DIR) -lft -lm -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJ) -L$(LIBFT_DIR) -lft -lm -L$(MLX_DIR) $(MLX_FLAGS) -o $(NAME)
 
 # Libft
 $(ROOT_DIR)/$(LIBFT_DIR)/libft.a:
@@ -36,11 +46,11 @@ $(ROOT_DIR)/$(LIBFT_DIR)/libft.a:
 
 # Compile tests
 $(BUILD_DIR)/%.o: %.c | $(BUILD_DIR)
-	$(CC) $(CFLAGS) -I$(INCLUDE_DIR) -I$(LIBFT_H) -c $< -o $@
+	$(CC) $(CFLAGS) -I$(INCLUDE_DIR) -I$(LIBFT_H) -I$(MLX_DIR) -c $< -o $@
 
 # Compile project
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c | $(BUILD_DIR)
-	$(CC) $(CFLAGS) -I$(INCLUDE_DIR) -I$(LIBFT_H) -c $< -o $@
+	$(CC) $(CFLAGS) -I$(INCLUDE_DIR) -I$(LIBFT_H) -I$(MLX_DIR) -c $< -o $@
 
 $(BUILD_DIR):
 	mkdir -p $(BUILD_DIR)

@@ -67,4 +67,9 @@ void	pixel_to_canvas(t_data *dt, int x, int y, t_tuple *color);
 /* draw.c */
 void	set_projectile(t_rt *rt);
 
+/* matrix.c */
+double	**create_matrix(int size);
+void	base_matrix(double **matrix, int size);
+bool	is_equal_matrix(double **m1, double **m2, int size);
+
 #endif // MINIRT_H
